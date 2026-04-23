@@ -28,3 +28,17 @@ arrowLeft.addEventListener("click", () => {
 arrowRight.addEventListener("click", () => {
 	console.log("clic droite");
 });
+
+const dotsContainer = document.querySelector(".dots");
+
+for (let i = 0; i < slides.length; i++) {
+	const dot = document.createElement("span");
+	dot.classList.add("dot");
+
+	// premier point actif
+	if (i === 0) {
+		dot.classList.add("dot_selected");
+	}
+
+	dotsContainer.appendChild(dot);
+}
