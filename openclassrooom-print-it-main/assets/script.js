@@ -21,12 +21,14 @@ const slides = [
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 
-arrowLeft.addEventListener("click", () => {
-	console.log("clic gauche");
+arrowRight.addEventListener("click", () => {
+	currentSlide++;
+	updateCarousel();
 });
 
-arrowRight.addEventListener("click", () => {
-	console.log("clic droite");
+arrowLeft.addEventListener("click", () => {
+	currentSlide--;
+	updateCarousel();
 });
 
 const dotsContainer = document.querySelector(".dots");
@@ -41,4 +43,21 @@ for (let i = 0; i < slides.length; i++) {
 	}
 
 	dotsContainer.appendChild(dot);
+}
+
+const bannerImg = document.querySelector(".banner-img");
+const bannerText = document.querySelector("#banner p");
+let currentSlide = 0;
+
+function updateCarousel() {
+	bannerImg.src = "./assets/images/slideshow/" + slides[currentSlide].image;
+	bannerText.innerHTML = slides[currentSlide].tagLine;
+
+	const allDots = document.querySelectorAll(".dot");
+
+	for (let i = 0; i < allDots.length; i++) {
+		allDots[i].classList.remove("dot_selected");
+	}
+
+	allDots[currentSlide].classList.add("dot_selected");
 }
