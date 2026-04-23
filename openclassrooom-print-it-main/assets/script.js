@@ -22,12 +22,22 @@ const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 
 arrowRight.addEventListener("click", () => {
-	currentSlide++;
+	if (currentSlide === slides.length - 1) {
+		currentSlide = 0;
+	} else {
+		currentSlide++;
+	}
+
 	updateCarousel();
 });
 
 arrowLeft.addEventListener("click", () => {
-	currentSlide--;
+	if (currentSlide === 0) {
+		currentSlide = slides.length - 1;
+	} else {
+		currentSlide--;
+	}
+
 	updateCarousel();
 });
 
